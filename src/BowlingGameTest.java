@@ -22,16 +22,36 @@ public class BowlingGameTest {
 
     @Test
     public void bonusDuSpare(){
-        game.roll(8);
-        game.roll(2);
-        game.roll(1);
+        game.roll(6);
+        game.roll(4);
+        game.roll(5);
         rollMany(17, 0);
-        assertEquals(12, game.score());
+        assertEquals(20, game.score());
     }
-
+    
+    @Test
+    public void bonusDuStrike()  {
+        game.roll(10);
+        game.roll(3);
+        game.roll(5);
+        rollMany(16, 0);
+        assertEquals(26, game.score());
+    }
+    
+    
     private void rollMany(int numberRolls, int numberPins) {
+    	
         for (int i = 0; i < numberRolls; i++) {
+        
             game.roll(numberPins);
         }
     }
+    
+    public void queDesStriks(){
+        rollMany(12,10);
+        assertEquals(300, game.score());
+      }
+
+  
+    
 }
